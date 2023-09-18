@@ -7,5 +7,9 @@ const (
 )
 
 const (
-	Passengers = 3
+	Passengers = 20
+)
+
+const (
+	NumOfChannel = 3
 )

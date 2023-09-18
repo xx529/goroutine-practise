@@ -1,0 +1,53 @@
+package main
+
+import "fmt"
+
+func RunCheckDesign2() {
+	fmt.Print("design-2...")
+
+	passengerChannelList := make(chan struct{})
+
+	var allChannelList []<-chan int
+
+	for i := 0; i < NumOfChannel; i++ {
+		c := start(RunAllCheck, passengerChannelList)
+		allChannelList = append(allChannelList, c)
+	}
+
+	for i := 0; i < Passengers; i++ {
+		passengerChannelList <- struct{}{}
+	}
+	close(passengerChannelList)
+
+	println("total time cost", cost(allChannelList))
+
+}
+
+func start(workFunction func() int, queue <-chan struct{}) <-chan int {
+	c := make(chan int)
+
+	go func() {
+		total := 0
+
+		for {
+			_, ok := <-queue
+			if !ok {
+				c <- total
+				return
+			}
+			total += workFunction()
+		}
+	}()
+	return c
+}
+
+func cost(args []<-chan int) int {
+	n := 0
+	for _, c := range args {
+		total := <-c
+		if total >= n {
+			n = total
+		}
+	}
+	return n
+}

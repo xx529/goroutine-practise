@@ -1,31 +1,12 @@
 package main
 
-import (
-	"fmt"
-)
+import "fmt"
 
-func idCheck(pid int) int {
-	Working(IdCheckTimeCost)
-	fmt.Println(pid, "id check ok!")
-	return IdCheckTimeCost
-}
-
-func bodyCheck(pid int) int {
-	Working(BodyCheckTimeCost)
-	fmt.Println(pid, "body check ok!")
-	return BodyCheckTimeCost
-}
-
-func xRayCheck(pid int) int {
-	Working(XRayCheckCost)
-	fmt.Println(pid, "xray check ok!")
-	return XRayCheckCost
-}
-
-func RunCheckDesign1(pid int) int {
+func RunCheckDesign1() {
 	total := 0
-	total += idCheck(pid)
-	total += bodyCheck(pid)
-	total += xRayCheck(pid)
-	return total
+	fmt.Print("design-1...")
+	for i := 0; i < Passengers; i++ {
+		total += RunAllCheck()
+	}
+	println("total time cost", total)
 }

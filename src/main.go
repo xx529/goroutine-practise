@@ -1,11 +1,9 @@
 package main
 
+import "fmt"
+
 func main() {
-	total := 0
-
-	for i := 0; i < Passengers; i++ {
-		total += RunCheckDesign1(i)
-	}
-
-	println("total time cost:", total)
+	fmt.Println("total Passengers", Passengers)
+	RunCheckDesign1()
+	RunCheckDesign2()
 }
