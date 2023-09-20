@@ -10,7 +10,7 @@ func RunCheckDesign2() {
 	var allChannelList []<-chan int
 
 	for i := 0; i < NumOfChannel; i++ {
-		c := start(RunAllCheck, passengerChannelList)
+		c := startForDesign2(RunAllCheck, passengerChannelList)
 		allChannelList = append(allChannelList, c)
 	}
 
@@ -23,7 +23,7 @@ func RunCheckDesign2() {
 
 }
 
-func start(workFunction func() int, queue <-chan struct{}) <-chan int {
+func startForDesign2(workFunction func() int, queue <-chan struct{}) <-chan int {
 	c := make(chan int)
 
 	go func() {
