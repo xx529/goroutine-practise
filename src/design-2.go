@@ -40,14 +40,3 @@ func startForDesign2(workFunction func() int, queue <-chan struct{}) <-chan int 
 	}()
 	return c
 }
-
-func cost(args []<-chan int) int {
-	n := 0
-	for _, c := range args {
-		total := <-c
-		if total >= n {
-			n = total
-		}
-	}
-	return n
-}

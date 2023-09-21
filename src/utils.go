@@ -28,3 +28,14 @@ func RunAllCheck() int {
 	total += xRayCheck()
 	return total
 }
+
+func cost(args []<-chan int) int {
+	n := 0
+	for _, c := range args {
+		total := <-c
+		if total >= n {
+			n = total
+		}
+	}
+	return n
+}
