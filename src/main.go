@@ -7,5 +7,6 @@ func main() {
 	//RunCheckDesign2()
 	//fmt.Println()
 	//RunCheckDesign3()
-	test()
+	//runTimeOut()
+	runNotifyWait()
 }

@@ -39,7 +39,7 @@ func work(f func(int) int) chan int {
 	return c
 }
 
-func test() {
+func runTimeOut() {
 	c := work(myFunc)
 
 	timer := time.NewTimer(4 * time.Second)
