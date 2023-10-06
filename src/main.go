@@ -8,5 +8,6 @@ func main() {
 	//fmt.Println()
 	//RunCheckDesign3()
 	//runTimeOut()
-	runNotifyWait()
+	//runNotifyWait()
+	runClosePattern()
 }

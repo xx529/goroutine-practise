@@ -39,3 +39,7 @@ func cost(args []<-chan int) int {
 	}
 	return n
 }
+
+func busyWork(t int) {
+	time.Sleep(time.Second * time.Duration(t))
+}

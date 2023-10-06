@@ -5,10 +5,6 @@ import (
 	"time"
 )
 
-func busyWork(t int) {
-	time.Sleep(time.Millisecond * time.Duration(t))
-}
-
 func spawn(f func(int)) chan string {
 	quit := make(chan string)
 
