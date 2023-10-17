@@ -26,7 +26,11 @@ func ConcurrentShutdown(waitTimeout time.Duration, shutDowners ...GeneralShutDow
 			wg.Add(1)
 			go func(s GeneralShutDowner) {
 				defer wg.Done()
-				s.ShutDown(waitTimeout)
+				e := s.ShutDown(waitTimeout)
+				if e != nil {
+					fmt.Println("error")
+				}
+
 			}(s)
 		}
 		wg.Wait()
