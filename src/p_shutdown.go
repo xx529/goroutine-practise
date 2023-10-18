@@ -2,7 +2,7 @@ package main
 
 import (
 	"errors"
-	"fmt"
+	"log"
 	"sync"
 	"time"
 )
@@ -28,7 +28,7 @@ func ConcurrentShutdown(waitTimeout time.Duration, shutDowners ...GeneralShutDow
 				defer wg.Done()
 				e := s.ShutDown(waitTimeout)
 				if e != nil {
-					fmt.Println("error")
+					log.Println("error")
 				}
 
 			}(s)
@@ -60,6 +60,6 @@ func runPShutDown() {
 	f2 := ShutDownFunc(ShutDownMaker(4))
 	f3 := ShutDownFunc(ShutDownMaker(5))
 
-	r := ConcurrentShutdown(time.Second*1, f1, f2, f3)
-	fmt.Println(r)
+	r := ConcurrentShutdown(time.Second*10, f1, f2, f3)
+	log.Println(r)
 }
