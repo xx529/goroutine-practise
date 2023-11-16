@@ -10,7 +10,7 @@ func myFunc(round int) int {
 	last := 0
 	for i := 0; i < round; i++ {
 		time.Sleep(1 * time.Second)
-		//fmt.Println("sleep!")
+		fmt.Println("sleep!")
 	}
 	return last + 1
 }
