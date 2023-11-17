@@ -7,7 +7,7 @@ const (
 )
 
 const (
-	Passengers = 30
+	Passengers = 50
 )
 
 const (
